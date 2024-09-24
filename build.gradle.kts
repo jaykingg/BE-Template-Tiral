@@ -30,15 +30,16 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // Kotlinx Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.7.3") // 최신 Coroutines Reactor
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
     // Jackson for Kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     // Kotest for testing
-    testImplementation("io.kotest:kotest-runner-junit5:5.8.0") // Kotest 최신 버전
+    testImplementation("io.kotest:kotest-runner-junit5:5.8.0")
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
+    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter-kotlin:1.0.25")
 
     // Reactor Test (WebFlux 테스트)
     testImplementation("io.projectreactor:reactor-test")
