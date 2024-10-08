@@ -36,10 +36,19 @@ dependencies {
     // Jackson for Kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    // Kotest for testing
-    testImplementation("io.kotest:kotest-runner-junit5:5.8.0")
-    testImplementation("io.kotest:kotest-assertions-core:5.8.0")
-    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter-kotlin:1.0.25")
+    // swagger
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.1.0")
+
+    // Kotest for BehaviorSpec
+    testImplementation("io.kotest:kotest-runner-junit5:5.5.4")  // 최신 안정 버전
+    testImplementation("io.kotest:kotest-assertions-core:5.5.4")
+    testImplementation("io.kotest:kotest-framework-engine:5.5.4")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.2")
+
+    // FixtureMonkey for test data generation
+    testImplementation("com.navercorp.fixturemonkey:fixture-monkey:1.0.25")
+    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-kotlin:1.0.25")
+
 
     // Reactor Test (WebFlux 테스트)
     testImplementation("io.projectreactor:reactor-test")
