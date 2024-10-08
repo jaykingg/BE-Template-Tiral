@@ -22,13 +22,14 @@ class UserServiceTest : BehaviorSpec({
         `when`("새로운 사용자를 저장하면") {
             val payload = UserPayload(name = "John Doe", email = "john@example.com")
             val user = User(name = payload.name, email = payload.email)
+            val userView = user.toView()
 
             // MockK를 사용하여 save 동작 모킹
             coEvery { userRepository.save(any()) } returns user
 
             then("사용자가 저장되어야 한다") {
                 val savedUser = userService.saveUser(payload)
-                savedUser shouldBe user
+                savedUser shouldBe userView
 
                 // 리포지토리의 save 함수가 호출되었는지 검증
                 coVerify(exactly = 1) { userRepository.save(any()) }
@@ -39,13 +40,14 @@ class UserServiceTest : BehaviorSpec({
             val user1 = User(name = "John Doe", email = "john@example.com")
             val user2 = User(name = "Jane Doe", email = "jane@example.com")
             val userList = listOf(user1, user2)
+            val userViewList = userList.map { it.toView() }
 
             // MockK를 사용하여 findAll 동작 모킹
             coEvery { userRepository.findAll() } returns userList.asFlow()
 
             then("모든 사용자가 반환되어야 한다") {
-                val users = userService.findAllUsers().toList()
-                users shouldBe userList
+                val users = userService.getAllUsers().toList()
+                users shouldBe userViewList
 
                 // 리포지토리의 findAll 함수가 호출되었는지 검증
                 coVerify(exactly = 1) { userRepository.findAll() }
